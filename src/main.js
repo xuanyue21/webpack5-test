@@ -1,10 +1,14 @@
-/*
- * @Author: 翟珂峰
- * @LastEditTime: 2022-07-17 14:04:32
- * @Description: 
- */
-import {createApp} from 'vue';
-import App from './App';
-import router from './router';
+import "./index.css";
 
-createApp(App).use(router).mount(document.getElementById('app'));
+console.log('hello main');
+console.log('hello 2222');
+console.log('hello 3333');
+
+const sum = (...args)=> {
+    return args.reduce((pre,cur)=> pre+cur,0)
+}
+
+// const imgUrl = require("./images/logo.png");
+// const img = new Image();
+// img.url = imgUrl;
+// document.getElementById('app').appendChild(img);

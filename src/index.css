@@ -1,0 +1,6 @@
+#app{
+    width: 100px;
+    height: 100px;
+    background: url('./images/logo.png') no-repeat center;
+    background-size: 100%;
+}

@@ -1,57 +1,23 @@
 {
-  "name": "webpack5-test",
+  "name": "define-loader",
   "version": "1.0.0",
-  "description": "使用webpack5打包各资源",
-  "main": "index.js",
+  "description": "",
+  "main": "webpack.config.js",
   "scripts": {
-    "start": "npm run dev",
-    "dev": "cross-env NODE_ENV=development webpack serve --config ./config/webpack.config.js",
-    "build": "cross-env NODE_ENV=production webpack  --config ./config/webpack.prod.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/xuanyue21/webpack5-test.git"
+    "debug": "node --inspect-brk ./node_modules/webpack-cli/bin/cli.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/xuanyue21/webpack5-test/issues"
-  },
-  "homepage": "https://github.com/xuanyue21/webpack5-test#readme",
-  "browserslist": [
-    "last 2 version",
-    "> 1%",
-    "not dead"
-  ],
   "devDependencies": {
     "@babel/core": "^7.18.6",
-    "@babel/eslint-parser": "^7.18.2",
-    "@vue/cli-plugin-babel": "^5.0.8",
-    "babel-loader": "^8.2.5",
-    "copy-webpack-plugin": "^11.0.0",
-    "cross-env": "^7.0.3",
+    "@babel/preset-env": "^7.18.6",
     "css-loader": "^6.7.1",
-    "css-minimizer-webpack-plugin": "^4.0.0",
-    "eslint-plugin-vue": "^9.2.0",
-    "eslint-webpack-plugin": "^3.2.0",
     "html-webpack-plugin": "^5.5.0",
-    "less-loader": "^11.0.0",
-    "mini-css-extract-plugin": "^2.6.1",
-    "postcss": "^8.4.14",
-    "postcss-loader": "^7.0.1",
-    "postcss-preset-env": "^7.7.2",
-    "sass": "^1.53.0",
-    "sass-loader": "^13.0.2",
+    "loader-utils": "^3.2.0",
+    "safe-require": "^1.0.4",
     "style-loader": "^3.3.1",
-    "vue-loader": "^17.0.0",
-    "vue-template-compiler": "^2.7.7",
     "webpack": "^5.73.0",
-    "webpack-cli": "^4.10.0",
-    "webpack-dev-server": "^4.9.3"
-  },
-  "dependencies": {
-    "vue": "^3.2.37",
-    "vue-router": "^4.1.2"
+    "webpack-cli": "^4.10.0"
   }
 }
