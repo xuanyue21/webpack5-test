@@ -100,7 +100,24 @@ module.exports = {
     ],
     optimization: {
         splitChunks: {
-            chunks: 'all'
+            chunks: 'all',
+            cacheGroups: {
+                react: {
+                    test: /[\\/]node_modules[\\/]react(.*)?[\\/]/,
+                    name: 'react-chunk',
+                    priority: 40,
+                },
+                antd: {
+                    test: /[\\/]node_modules[\\/]antd(.*)?[\\/]/,
+                    name: 'antd-chunk',
+                    priority: 30,
+                },
+                default: {
+                    test: /[\\/]node_modules/,
+                    name: 'default-chunk',
+                    priority: 20,
+                }
+            }
         },
         runtimeChunk:{
             name: entryP => `runtime~${entryP.name}`

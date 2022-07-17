@@ -1,6 +1,6 @@
 /*
  * @Author: 翟珂峰
- * @LastEditTime: 2022-07-17 12:09:08
+ * @LastEditTime: 2022-07-17 13:12:43
  * @Description: 
  */
 const path = require('path');
@@ -109,7 +109,24 @@ module.exports = {
     ],
     optimization: {
         splitChunks: {
-            chunks: 'all'
+            chunks: 'all',
+            cacheGroups: {
+                react: {
+                    test: /[\\/]node_modules[\\/]react(.*)?[\\/]/,
+                    name: 'react-chunk',
+                    priority: 40,
+                },
+                antd: {
+                    test: /[\\/]node_modules[\\/]antd(.*)?[\\/]/,
+                    name: 'antd-chunk',
+                    priority: 30,
+                },
+                default: {
+                    test: /[\\/]node_modules/,
+                    name: 'default-chunk',
+                    priority: 20,
+                }
+            }
         },
         runtimeChunk:{
             name: entryP => `runtime~${entryP.name}`
