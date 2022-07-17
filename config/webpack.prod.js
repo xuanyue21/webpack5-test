@@ -1,6 +1,6 @@
 /*
  * @Author: 翟珂峰
- * @LastEditTime: 2022-07-17 13:12:43
+ * @LastEditTime: 2022-07-17 13:59:38
  * @Description: 
  */
 const path = require('path');
@@ -10,7 +10,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-
+const { VueLoaderPlugin } = require('vue-loader');
+const { DefinePlugin} = require('webpack');
 const getStyleLoader = (pre) => {
     return [
         MiniCssExtractPlugin.loader,
@@ -69,12 +70,19 @@ module.exports = {
                 type: "asset/resource",
             },
             {
-                test: /\.jsx?$/,
+                test: /\.js$/,
                 loader: 'babel-loader',
                 exclude: /node_modules/,
                 options: {
                     cacheDirectory: true,
                     cacheCompression: false,
+                }
+            },
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader',
+                options: {
+                    cacheDirectory: true,
                 }
             }
         ]
@@ -106,20 +114,22 @@ module.exports = {
             ],
             
         }),
+        new VueLoaderPlugin(),
+        // cross-env定义的环境变量给打包工具使用
+        // DefinePlugin定义环境变量是给源代码使用的,从而解决vue3页面警告问题
+        new DefinePlugin({
+            __VUE_OPTIONS_API__: true,
+            __VUE_PROD_DEVTOOLS__: false
+        })
     ],
     optimization: {
         splitChunks: {
             chunks: 'all',
             cacheGroups: {
-                react: {
-                    test: /[\\/]node_modules[\\/]react(.*)?[\\/]/,
-                    name: 'react-chunk',
+                vue: {
+                    test: /[\\/]node_modules[\\/]vue(.*)?[\\/]/,
+                    name: 'vue-chunk',
                     priority: 40,
-                },
-                antd: {
-                    test: /[\\/]node_modules[\\/]antd(.*)?[\\/]/,
-                    name: 'antd-chunk',
-                    priority: 30,
                 },
                 default: {
                     test: /[\\/]node_modules/,
@@ -138,7 +148,7 @@ module.exports = {
         ]
     },
     resolve:{
-        extensions: ['.jsx','.js','.json']
+        extensions: ['.vue','.js','.json']
     },
     devtool: 'source-map',
     performance: false,// 关闭性能分析

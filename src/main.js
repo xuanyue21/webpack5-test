@@ -1,16 +1,10 @@
 /*
  * @Author: 翟珂峰
- * @LastEditTime: 2022-07-17 13:08:37
+ * @LastEditTime: 2022-07-17 14:04:32
  * @Description: 
  */
-import React from 'react';
-import ReactDom from 'react-dom/client';
-import { BrowserRouter} from 'react-router-dom';
+import {createApp} from 'vue';
 import App from './App';
+import router from './router';
 
-const reactRoot = ReactDom.createRoot(document.getElementById('root'));
-reactRoot.render(
-    <BrowserRouter>
-        <App/>
-    </BrowserRouter>
-)
+createApp(App).use(router).mount(document.getElementById('app'));
