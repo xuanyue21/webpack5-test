@@ -1,12 +1,12 @@
 <!--
  * @Author: 翟珂峰
- * @LastEditTime: 2022-07-17 12:09:46
+ * @LastEditTime: 2022-07-17 14:20:00
  * @Description: 
 -->
 # webpack5-test
 使用webpack5打包各资源
-# react分支
-表示针对react的webpack工具
+# vue分支
+表示针对vue的webpack工具
 
 - 注意事项
 1. 是否开启缓存
